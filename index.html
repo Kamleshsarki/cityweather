@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bujumbura Data</title>
+</head>
+<body>
+  <!-- Retrieved data will be dumped here -->
+  <div id="city"></div>
+  <div id="wind"></div>
+  <div id="humidity"></div>
+  <div id="temp"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // Things to accomplish:
+    // Get an API Key from OpenWeatherMap API
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=ontario,&appid=c136e8e87bf6576cee9f2f6518058e6e')
+    // Create an AJAX call to retrieve data Log the data in console
+    .then(r=>r.json())
+    .then(({name, wind,main})=>{    
+        document.querySelector('#city').textContent = `${name} City Details`
+        document.querySelector('#wind').textContent = `Wind Speed: ${wind.speed}`
+        document.querySelector('#humidity').textContent = `Humidity: ${main.humidity}`
+        document.querySelector('#temp').textContent = `Temperature (F): ${main.temp}`
+    })
+    // Log the data in HTML
+  </script>
+</body>
+</html>
